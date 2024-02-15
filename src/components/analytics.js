@@ -12,36 +12,41 @@ export const Analytics = () => {
     navigate("/login");
   };
   return (
-    <div className="w-[5%]  h-[100vh] overflow-hidden border-r-2 border-black/20 flex-col text-5xl ">
-      <IoChatbox
-        className="mt-8 ml-auto mr-auto hover:text-blue-500 cursor-pointer"
-        onClick={() => {
-          navigate("/clientDesk");
-        }}
-      />
+    <div className="flex font-[Poppins]">
+      <div className="w-[5%]  h-[100vh] overflow-hidden border-r-2 border-black/20 flex-col text-5xl ">
+        <IoChatbox
+          className="mt-8 ml-auto mr-auto hover:text-blue-500 cursor-pointer"
+          onClick={() => {
+            navigate("/clientDesk");
+          }}
+        />
 
-      <RiInboxArchiveFill
-        className="mt-5 ml-auto mr-auto hover:text-blue-500 cursor-pointer"
-        onClick={() => {
-          navigate("/inbox");
-        }}
-      />
-      <IoIosContacts
-        className="mt-5 ml-auto mr-auto hover:text-blue-500 cursor-pointer"
-        onClick={() => {
-          navigate("/contacts");
-        }}
-      />
-      <DiGoogleAnalytics
-        className="mt-5 ml-auto mr-auto text-6xl hover:text-blue-500 cursor-pointer"
-        onClick={() => {
-          navigate("/analytics");
-        }}
-      />
-      <AiOutlineLogout
-        className="mt-10 ml-auto mr-auto text-red-500 cursor-pointer"
-        onClick={logout}
-      />
+        <RiInboxArchiveFill
+          className="mt-5 ml-auto mr-auto hover:text-blue-500 cursor-pointer"
+          onClick={() => {
+            navigate("/inbox");
+          }}
+        />
+        <IoIosContacts
+          className="mt-5 ml-auto mr-auto hover:text-blue-500 cursor-pointer"
+          onClick={() => {
+            navigate("/contacts");
+          }}
+        />
+        <DiGoogleAnalytics
+          className="mt-5 ml-auto mr-auto text-6xl hover:text-blue-500 cursor-pointer"
+          onClick={() => {
+            navigate("/analytics");
+          }}
+        />
+        <AiOutlineLogout
+          className="mt-10 ml-auto mr-auto text-red-500 cursor-pointer"
+          onClick={logout}
+        />
+      </div>
+      <div className="w-full h-[100vh] items-center flex justify-center">
+        <h1 className="text-5xl text-black/50">Analytics</h1>
+      </div>
     </div>
   );
 };

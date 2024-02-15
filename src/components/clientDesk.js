@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoChatbox } from "react-icons/io5";
 import { RiInboxArchiveFill } from "react-icons/ri";
 import { IoIosContacts } from "react-icons/io";
@@ -15,7 +15,50 @@ import { SlOptions } from "react-icons/sl";
 import { CgProfile } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 
+
 export const ClientDesk = () => {
+  const [selected, setSelected] = useState(0);
+  const people = [
+    {
+      name: "Shyam",
+      email: "shyamverma@gmailcom",
+      phone: "+91 54XXXXXXXX",
+      location: "India",
+      chat: "The products was amazing and i would like to order it more.",
+      reply:
+        "Sure,You can do that in our application and get variety of products",
+    },
+    {
+      name: "Rohit",
+      email: "rohitsharma@gmailcom",
+      phone: "+91 82XXXXXXXX",
+      location: "Canada",
+      chat: "I want to know the status of my delivery.",
+      reply: "Sure,Can you share the order Details ?",
+    },
+    {
+      name: "Ismail",
+      email: "ismailyusuf@gmailcom",
+      phone: "+91 87XXXXXXXX",
+      location: "India",
+      chat: "The products was amazing and i would like to share a review.",
+      reply: "Feel free to review on our app.",
+    },
+    {
+      name: "Jadhav",
+      email: "jadhav.amazoni@gmailcom",
+      phone: "+91 74XXXXXXXX",
+      location: "California",
+      chat: "I am a seller and i would like to sell on amazon.",
+      reply: "Provide the details of the company.",
+    },
+  ];
+
+  useEffect(() => {
+    //Runs on the first render
+    //And any time any dependency value changes
+  }, [selected]);
+
   const navigate = useNavigate();
   const logout = () => {
     navigate("/login");
@@ -54,33 +97,32 @@ export const ClientDesk = () => {
           <h1 className=" text-2xl m-4">Chats</h1>
           <div>
             <ul>
-              <li className="h-24 rounded-md m-1 bg-blue-500 text-white">
-                <div className="flex justify-between p-2 ">
-                  <div className="text-lg">Shyam</div>
-                  <div>12:00pm</div>
-                </div>
-                <div className="p-2 ">
-                  <h1>The products was amazing and i ....</h1>
-                </div>
-              </li>
-              <li className="h-24 bg-white rounded-md m-1">
-                <div className="flex justify-between p-2 ">
-                  <div className="text-lg">Rohit</div>
-                  <div>1:20pm</div>
-                </div>
-                <div className="p-2 ">
-                  <h1>The products was amazing and i ....</h1>
-                </div>
-              </li>
-              <li className="h-24 bg-white rounded-md m-1">
-                <div className="flex justify-between p-2 ">
-                  <div className="text-lg">Hitesh</div>
-                  <div>3:00am</div>
-                </div>
-                <div className="p-2 ">
-                  <h1>The products was amazing and i ....</h1>
-                </div>
-              </li>
+              {people.map((person, index) => {
+                return selected !== index ? (
+                  <li
+                    className="h-24 rounded-md m-1 bg-white text-black cursor-pointer"
+                    onClick={() => setSelected(index)}
+                  >
+                    <div className="flex justify-between p-2 ">
+                      <div className="text-lg">{person.name}</div>
+                      <div>12:00pm</div>
+                    </div>
+                    <div className="p-2 ">
+                      <h1>The products was amazing and i ....</h1>
+                    </div>
+                  </li>
+                ) : (
+                  <li className="h-24 rounded-md m-1 bg-blue-500 text-white">
+                    <div className="flex justify-between p-2 ">
+                      <div className="text-lg">{person.name}</div>
+                      <div>12:00pm</div>
+                    </div>
+                    <div className="p-2 ">
+                      <h1>The products was amazing and i ....</h1>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
@@ -91,7 +133,7 @@ export const ClientDesk = () => {
                 <CgProfile />
               </div>
               <div>
-                <div className="text-xl">Shyam</div>
+                <div className="text-xl">{people[selected].name}</div>
                 <div className="text-gray-500">last seen recently</div>
               </div>
             </div>
@@ -105,12 +147,12 @@ export const ClientDesk = () => {
           <div className="h-[82%] ">
             <div className="mt-4">
               <div className="flex gap-2 p-2">
-                <h1>Shyam</h1>
+                <h1>{people[selected].name}</h1>
                 <h1 className="text-gray-500">12:00pm</h1>
               </div>
               <div className="bg-white ">
                 <h1 className="inline border-2  border-black rounded-lg ml-2 p-2">
-                  The products was amazing and i would like to order it more.
+                  {people[selected].chat}
                 </h1>
               </div>
             </div>
@@ -121,7 +163,7 @@ export const ClientDesk = () => {
               </div>
               <div className="text-white">
                 <h1 className="inline border-2  border-black bg-blue-500 rounded-lg ml-2 p-2">
-                  Sure you can place order online.
+                  {people[selected].reply}
                 </h1>
               </div>
             </div>
@@ -149,10 +191,10 @@ export const ClientDesk = () => {
               </div>
               <div className="flex justify-end ">
                 <ul>
-                  <li>Shyam</li>
-                  <li>shyamverma@gmail.com</li>
-                  <li>+91 76xxxxxxxxx</li>
-                  <li>India</li>
+                  <li>{people[selected].name}</li>
+                  <li>{people[selected].email}</li>
+                  <li>{people[selected].phone}</li>
+                  <li>{people[selected].location}</li>
                 </ul>
               </div>
             </div>

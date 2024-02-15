@@ -13,9 +13,8 @@ export const SignUp = () => {
   };
 
   const submitDetails = async (e) => {
-    console.log("here")
     e.preventDefault();
-    
+
     try {
       const response = await axios.post("http://localhost:5000/signup", {
         username,
@@ -23,7 +22,11 @@ export const SignUp = () => {
         password,
       });
       if (response.data.message === "300") {
+        alert("Invalid Email");
+      } else if (response.data.message === "301") {
         alert("User already exists");
+      } else if (response.data.message === "302") {
+        alert("Email already exists");
       } else {
         alert(response.data.message);
         navigate("/login");
