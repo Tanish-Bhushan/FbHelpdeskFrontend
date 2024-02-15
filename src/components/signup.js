@@ -16,7 +16,7 @@ export const SignUp = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:5000/signup", {
+      const response = await axios.post("https://fbhelpdeskbackend.onrender.com/signup", {
         username,
         email,
         password,
